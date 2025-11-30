@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanju AutoLine | Premium Car Showroom</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <!-- Model Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Sanju AutoLine</div>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#home">New Cars</a></li>
+                <li><a href="#showroom">Used Cars</a></li>
+                <li><a href="#contact">Reviews</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                <span>🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <img src="assets/images/hero.png" alt="Car Background">
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Find your right car</h1>
+            <div class="search-widget">
+                <input type="text" class="search-input" placeholder="Type to select car name, e.g. Honda City">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="showroom" class="showroom">
+        <div class="section-header">
+            <h2>Featured Cars</h2>
+        </div>
+
+        <div class="car-grid">
+            <!-- Car Card 1 -->
+            <div class="car-card"
+                onclick="openViewer('assets/images/car1.png', 'Ferrari Rosso', 'Italian Masterpiece', 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Ferrari/glTF-Binary/Ferrari.glb')">
+                <div class="card-image">
+                    <img src="assets/images/car1.png" alt="Ferrari Rosso">
+                </div>
+                <div class="card-info">
+                    <h3>Ferrari Rosso</h3>
+                    <p class="price">₹ 4.50 Crore</p>
+                    <p class="emi-info">EMI starts at ₹ 7.5 Lakh/month</p>
+                    <button class="action-btn">Check On-Road Price</button>
+                </div>
+            </div>
+
+            <!-- Car Card 2 -->
+            <div class="car-card"
+                onclick="openViewer('assets/images/car2.png', 'Silver Arrow EV', 'Electric Luxury', 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Buggy/glTF-Binary/Buggy.glb')">
+                <div class="card-image">
+                    <img src="assets/images/car2.png" alt="Silver Arrow EV">
+                </div>
+                <div class="card-info">
+                    <h3>Silver Arrow EV</h3>
+                    <p class="price">₹ 1.20 Crore</p>
+                    <p class="emi-info">EMI starts at ₹ 2.1 Lakh/month</p>
+                    <button class="action-btn">Check On-Road Price</button>
+                </div>
+            </div>
+
+            <!-- Car Card 3 -->
+            <div class="car-card"
+                onclick="openViewer('assets/images/car3.png', 'Obsidian SUV', 'Luxury SUV', 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/CesiumMilkTruck/glTF-Binary/CesiumMilkTruck.glb')">
+                <div class="card-image">
+                    <img src="assets/images/car3.png" alt="Obsidian SUV">
+                </div>
+                <div class="card-info">
+                    <h3>Obsidian SUV</h3>
+                    <p class="price">₹ 2.80 Crore</p>
+                    <p class="emi-info">EMI starts at ₹ 4.8 Lakh/month</p>
+                    <button class="action-btn">Check On-Road Price</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 360 Viewer Modal -->
+    <div id="viewer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeViewer()">&times;</span>
+            <div class="modal-body">
+                <div class="model-container">
+                    <model-viewer id="car-model" src="" alt="A 3D model of a car" auto-rotate camera-controls
+                        shadow-intensity="1" environment-image="neutral" exposure="1" ar>
+                    </model-viewer>
+                </div>
+                <div class="car-details">
+                    <h2 id="modal-title">Car Name</h2>
+                    <p id="modal-desc">Experience the car in 360 degrees. Rotate, zoom, and explore every detail.</p>
+                    <button class="book-btn" onclick="openBooking()">Book Test Drive</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Begin Your Journey</h2>
+                <p>Leave your details and our concierge will contact you to schedule a private viewing or test drive.
+                </p>
+                <ul class="info-list">
+                    <li><span>📍</span> 123 Luxury Lane, Beverly Hills, CA</li>
+                    <li><span>📞</span> +1 (800) 555-0199</li>
+                    <li><span>✉️</span> concierge@velocita.com</li>
+                </ul>
+            </div>
+            <form class="contact-form" id="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required placeholder="+1 (555) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="model">Interested Model</label>
+                    <select id="model">
+                        <option value="Rosso Corsa Sport">Rosso Corsa Sport</option>
+                        <option value="Silver Arrow EV">Silver Arrow EV</option>
+                        <option value="Obsidian SUV">Obsidian SUV</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Request Consultation</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sanju AutoLine. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
